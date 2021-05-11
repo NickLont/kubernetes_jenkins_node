@@ -5,7 +5,7 @@ metadata:
   # name of the deployment
   name: nodejs-deployment
   labels:    
-    app: kubernetes_jenkins_node
+    app: kubernetes-jenkins-node
 # specification of the object
 spec:  
   # How many pods you want to deploy in the cluster under this Deployment
@@ -13,17 +13,17 @@ spec:
   # selector field defines how the Deployment finds which Pods to manage
   selector:    
     matchLabels:
-      app: kubernetes_jenkins_node
+      app: kubernetes-jenkins-node
   template:
     metadata:
-      # The Pods are labeled app: kubernetes_jenkins_node using the .metadata.labels field
+      # The Pods are labeled app: kubernetes-jenkins-node using the .metadata.labels field
       labels:
-        app: kubernetes_jenkins_node
+        app: kubernetes-jenkins-node
     spec: 
      containers:
-      # Create one container and name it kubernetes_jenkins_node using the .spec.template.spec.containers[0].name field
-      - name: kubernetes_jenkins_node
-        # The Pod template’s specification, or .template.spec field indicates that the Pods run one container, kubernetes_jenkins_node runs the image we specified from DockerHub
+      # Create one container and name it kubernetes-jenkins-node using the .spec.template.spec.containers[0].name field
+      - name: kubernetes-jenkins-node
+        # The Pod template’s specification, or .template.spec field indicates that the Pods run one container, kubernetes-jenkins-node runs the image we specified from DockerHub
         image: tormentoras/nodejs-kub
         ports:
         - containerPort: 8000
@@ -34,7 +34,7 @@ kind: Service
 metadata:
   name: nodejs-service
   labels:
-    app: kubernetes_jenkins_node
+    app: kubernetes-jenkins-node
 spec:
   # In the spec.type we specify nodeport. This helps to expose our pod
   # We can specify the nodeport manually between 30000 to 32767.Else it will automatically assign within the range
@@ -46,4 +46,4 @@ spec:
     targetPort: 8000
     nodePort: 32121
   selector:
-    app: kubernetes_jenkins_node
+    app: kubernetes-jenkins-node
