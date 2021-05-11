@@ -1,0 +1,2 @@
+# This will prevent your local modules from being copied onto your Docker image and possibly overwriting modules installed within your image.
+node_modules/
